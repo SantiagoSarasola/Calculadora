@@ -31,6 +31,7 @@ class MiVentana(QMainWindow):
         self.suma.clicked.connect(self.sumar)
         self.resta.clicked.connect(self.restar)
         self.producto.clicked.connect(self.multiplicar)
+        self.division.clicked.connect(self.dividir)
         self.igual.clicked.connect(self.resultado)
         #Listener de los Eventos de los botones para borrar
         self.borrar.clicked.connect(self.borrarNum)
@@ -55,6 +56,11 @@ class MiVentana(QMainWindow):
         self.operador1 = int(self.Calculo.text())
         self.Calculo.setText("")
         self.operacion = "multiplicar"
+    
+    def dividir(self):
+        self.operador1 = int(self.Calculo.text())
+        self.Calculo.setText("")
+        self.operacion = "division" 
     
    
     #--------- Funciones para el borrado ----------------------
@@ -110,6 +116,17 @@ class MiVentana(QMainWindow):
             self.operador2 = int(self.Calculo.text())
             resultado = str(self.operador1 * self.operador2)
             self.Calculo.setText(resultado) 
+        
+        if(self.operacion == "division"):
+            self.operador2 = int(self.Calculo.text())
+            if(self.operador2==0):
+                self.Calculo.setText("Error")
+                loop.exec_()
+                self.Calculo.setText("")
+                
+            else:
+                resultado = str(int(self.operador1/self.operador2))
+                self.Calculo.setText(resultado)
       
 
         operador1 = resultado

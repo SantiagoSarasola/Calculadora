@@ -346,7 +346,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>20</y>
+      <y>10</y>
       <width>291</width>
       <height>41</height>
      </rect>
@@ -355,6 +355,19 @@
      <font>
       <pointsize>22</pointsize>
      </font>
+    </property>
+   </widget>
+   <widget class="QLabel" name="mostrarOperacion">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>60</y>
+      <width>291</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
     </property>
    </widget>
   </widget>

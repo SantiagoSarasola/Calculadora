@@ -157,48 +157,49 @@ class MiVentana(QMainWindow):
                 resultado = str(int(sqrt(self.operador1)))
                 self.Calculo.setText(resultado)
 
+        self.mostrarOperacion.setText("")
         operador1 = resultado
 
     # Eventos de asignación de valores al label
 
     def click_1(self):
-        self.mostrarOperacion.setText(self.Calculo.text() + "1")
+        self.mostrarOperacion.setText(self.mostrarOperacion.text() + "1")
         self.Calculo.setText(self.Calculo.text() + "1")
 
     def click_2(self):
-        self.mostrarOperacion.setText(self.Calculo.text() + "2")
+        self.mostrarOperacion.setText(self.mostrarOperacion.text() + "2")
         self.Calculo.setText(self.Calculo.text() + "2")
 
     def click_3(self):
-        self.mostrarOperacion.setText(self.Calculo.text() + "3")
+        self.mostrarOperacion.setText(self.mostrarOperacion.text() + "3")
         self.Calculo.setText(self.Calculo.text() + "3")
 
     def click_4(self):
-        self.mostrarOperacion.setText(self.Calculo.text() + "4")
+        self.mostrarOperacion.setText(self.mostrarOperacion.text() + "4")
         self.Calculo.setText(self.Calculo.text() + "4")
 
     def click_5(self):
-        self.mostrarOperacion.setText(self.Calculo.text() + "5")
+        self.mostrarOperacion.setText(self.mostrarOperacion.text() + "5")
         self.Calculo.setText(self.Calculo.text() + "5")
 
     def click_6(self):
-        self.mostrarOperacion.setText(self.Calculo.text() + "6")
+        self.mostrarOperacion.setText(self.mostrarOperacion.text() + "6")
         self.Calculo.setText(self.Calculo.text() + "6")
 
     def click_7(self):
-        self.mostrarOperacion.setText(self.Calculo.text() + "7")
+        self.mostrarOperacion.setText(self.mostrarOperacion.text() + "7")
         self.Calculo.setText(self.Calculo.text() + "7")
 
     def click_8(self):
-        self.mostrarOperacion.setText(self.Calculo.text() + "8")
+        self.mostrarOperacion.setText(self.mostrarOperacion.text() + "8")
         self.Calculo.setText(self.Calculo.text() + "8")
 
     def click_9(self):
-        self.mostrarOperacion.setText(self.Calculo.text() + "9")
+        self.mostrarOperacion.setText(self.mostrarOperacion.text() + "9")
         self.Calculo.setText(self.Calculo.text() + "9")
 
     def click_0(self):
-        self.mostrarOperacion.setText(self.Calculo.text() + "0")
+        self.mostrarOperacion.setText(self.mostrarOperacion.text() + "0")
         self.Calculo.setText(self.Calculo.text() + "0")
 
     def click_negativo(self):

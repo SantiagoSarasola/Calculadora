@@ -102,6 +102,7 @@ class MiVentana(QMainWindow):
             newNum = num[:len(num)-1]
             self.Calculo.setText(newNum)
             self.operador1 = int(newNum)
+            self.mostrarOperacion.setText(newNum)
 
     # Función para mostrar el resultado final de la operación
 

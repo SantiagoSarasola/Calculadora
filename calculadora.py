@@ -31,6 +31,9 @@ class MiVentana(QMainWindow):
         self.suma.clicked.connect(self.sumar)
         self.resta.clicked.connect(self.restar)
         self.producto.clicked.connect(self.multiplicar)
+        self.division.clicked.connect(self.dividir)
+        self.potencia.clicked.connect(self.potenciacion)
+        self.raiz.clicked.connect(self.raizFuncion)
         self.igual.clicked.connect(self.resultado)
         #Listener de los Eventos de los botones para borrar
         self.borrar.clicked.connect(self.borrarNum)
@@ -55,6 +58,22 @@ class MiVentana(QMainWindow):
         self.operador1 = int(self.Calculo.text())
         self.Calculo.setText("")
         self.operacion = "multiplicar"
+    
+    def dividir(self):
+        self.operador1 = int(self.Calculo.text())
+        self.Calculo.setText("")
+        self.operacion = "division" 
+        
+    def potenciacion(self):
+        #Si ya tiene asignado un operador, agregamos el otro con el mismo botón
+        
+        self.operador1 = int(self.Calculo.text())
+        self.Calculo.setText("")
+        self.operacion = "potencia"
+    
+    def raizFuncion(self):
+        self.Calculo.setText("")
+        self.operacion = "raiz"
     
    
     #--------- Funciones para el borrado ----------------------
@@ -110,6 +129,32 @@ class MiVentana(QMainWindow):
             self.operador2 = int(self.Calculo.text())
             resultado = str(self.operador1 * self.operador2)
             self.Calculo.setText(resultado) 
+        
+        if(self.operacion == "division"):
+            self.operador2 = int(self.Calculo.text())
+            if(self.operador2==0):
+                self.Calculo.setText("Error")
+                loop.exec_()
+                self.Calculo.setText("")
+                
+            else:
+                resultado = str(int(self.operador1/self.operador2))
+                self.Calculo.setText(resultado)
+        
+        if(self.operacion == "potencia"):
+            self.operador2 = int(self.Calculo.text())
+            resultado = str(self.operador1 ** self.operador2)
+            self.Calculo.setText(resultado)
+        
+        if(self.operacion == "raiz"):
+            self.operador1 = int(self.Calculo.text())
+            if(self.operador1 < 0):
+                self.Calculo.setText("Error")
+                loop.exec_()
+                self.Calculo.setText("")
+            else:
+                resultado = str(int(sqrt(self.operador1)))
+                self.Calculo.setText(resultado)
       
 
         operador1 = resultado

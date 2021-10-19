@@ -28,6 +28,7 @@ class MiVentana(QMainWindow):
         self.boton9.clicked.connect(self.click_9)
         self.boton0.clicked.connect(self.click_0)
         self.negativo.clicked.connect(self.click_negativo)
+        self.coma.clicked.connect(self.click_coma)
         # Listeners de Eventos de los botones de las operaciones
         self.suma.clicked.connect(self.sumar)
         self.resta.clicked.connect(self.restar)
@@ -205,6 +206,10 @@ class MiVentana(QMainWindow):
 
     def click_negativo(self):
         self.Calculo.setText(self.Calculo.text() + "-")
+        
+    def click_coma(self):
+        self.mostrarOperacion.setText(self.mostrarOperacion.text() + ",")
+        self.Calculo.setText(self.Calculo.text() + ",")
 
 
 app = QApplication([])

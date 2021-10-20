@@ -42,12 +42,41 @@ class MiVentana(QMainWindow):
         self.limpiar.clicked.connect(self.limpiarNum)
 
     # Funciones de las operaciones
+    
+    def procesarComa(self,numeroStr):
+        numero =[]
+        floatNumber = False
+        
+        for item in numeroStr:
+            if(item == ','):
+                numero.append(".")
+                floatNumber = True
+            else:
+                numero.append(item)
+        print(numero)
+        numeroString = ""
+        for element in numero:
+            numeroString += element
+            
+        numeroADevolver=0
+        if(floatNumber):
+            numeroADevolver = float(numeroString)
+        else:
+            numeroADevolver = int(numeroString)
+        return numeroADevolver
+
+    def devolverComa(self,numeroInt):
+        numStri = str(numeroInt)
+        numStri = numStri.replace(".",",")
+        return numStri
 
     def sumar(self):
         self.mostrarOperacion.setText(self.Calculo.text() + "+")
-        self.operador1 = int(self.Calculo.text())
+        #self.operador1 = int(self.Calculo.text())
+        self.operador1 = self.procesarComa(self.Calculo.text())
         self.Calculo.setText("")
         self.operacion = "suma"
+        
 
     def restar(self):
         self.mostrarOperacion.setText(self.Calculo.text() + "-")
@@ -117,8 +146,9 @@ class MiVentana(QMainWindow):
 
         # Se procede a la operación dependiendo del tipo
         if(self.operacion == "suma"):
-            self.operador2 = int(self.Calculo.text())
-            resultado = str(self.operador1+self.operador2)
+            self.operador2 = self.procesarComa(self.Calculo.text())
+            #resultado = str(self.operador1+self.operador2)
+            resultado = self.devolverComa(self.operador1+self.operador2)
             self.Calculo.setText(resultado)
             #self.operador1 = self.operador1+self.operador2
             #self.operador2 = 0

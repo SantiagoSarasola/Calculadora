@@ -80,26 +80,30 @@ class MiVentana(QMainWindow):
 
     def restar(self):
         self.mostrarOperacion.setText(self.Calculo.text() + "-")
-        self.operador1 = int(self.Calculo.text())
+        #self.operador1 = int(self.Calculo.text())
+        self.operador1 = self.procesarComa(self.Calculo.text())
         self.Calculo.setText("")
         self.operacion = "resta"
 
     def multiplicar(self):
         self.mostrarOperacion.setText(self.Calculo.text() + "*")
-        self.operador1 = int(self.Calculo.text())
+        #self.operador1 = int(self.Calculo.text())
+        self.operador1 = self.procesarComa(self.Calculo.text())
         self.Calculo.setText("")
         self.operacion = "multiplicar"
 
     def dividir(self):
         self.mostrarOperacion.setText(self.Calculo.text() + "/")
-        self.operador1 = int(self.Calculo.text())
+        #self.operador1 = int(self.Calculo.text())
+        self.operador1 = self.procesarComa(self.Calculo.text())
         self.Calculo.setText("")
         self.operacion = "division"
 
     def potenciacion(self):
         # Si ya tiene asignado un operador, agregamos el otro con el mismo botón
         self.mostrarOperacion.setText(self.Calculo.text() + "^")
-        self.operador1 = int(self.Calculo.text())
+        #self.operador1 = int(self.Calculo.text())
+        self.operador1 = self.procesarComa(self.Calculo.text())
         self.Calculo.setText("")
         self.operacion = "potencia"
 
@@ -148,45 +152,55 @@ class MiVentana(QMainWindow):
         if(self.operacion == "suma"):
             self.operador2 = self.procesarComa(self.Calculo.text())
             #resultado = str(self.operador1+self.operador2)
-            resultado = self.devolverComa(self.operador1+self.operador2)
+            resultado = self.devolverComa(round(self.operador1+self.operador2,2))
             self.Calculo.setText(resultado)
             #self.operador1 = self.operador1+self.operador2
             #self.operador2 = 0
 
         if(self.operacion == "resta"):
-            self.operador2 = int(self.Calculo.text())
-            resultado = str(self.operador1 - self.operador2)
+            #self.operador2 = int(self.Calculo.text())
+            self.operador2 = self.procesarComa(self.Calculo.text())
+            #resultado = str(self.operador1 - self.operador2)
+            resultado = self.devolverComa(round(self.operador1-self.operador2,2))
             self.Calculo.setText(resultado)
 
         if(self.operacion == "multiplicar"):
-            self.operador2 = int(self.Calculo.text())
-            resultado = str(self.operador1 * self.operador2)
+            #self.operador2 = int(self.Calculo.text())
+            self.operador2 = self.procesarComa(self.Calculo.text())
+            #resultado = str(self.operador1 * self.operador2)
+            resultado = self.devolverComa(round(self.operador1*self.operador2,2))
             self.Calculo.setText(resultado)
 
         if(self.operacion == "division"):
-            self.operador2 = int(self.Calculo.text())
+            #self.operador2 = int(self.Calculo.text())
+            self.operador2 = self.procesarComa(self.Calculo.text())
             if(self.operador2 == 0):
                 self.Calculo.setText("Error")
                 loop.exec_()
                 self.Calculo.setText("")
 
             else:
-                resultado = str(int(self.operador1/self.operador2))
+                #resultado = str(int(self.operador1/self.operador2))
+                resultado = self.devolverComa(round(self.operador1/self.operador2,2))
                 self.Calculo.setText(resultado)
 
         if(self.operacion == "potencia"):
-            self.operador2 = int(self.Calculo.text())
-            resultado = str(self.operador1 ** self.operador2)
+            #self.operador2 = int(self.Calculo.text())
+            self.operador2 = self.procesarComa(self.Calculo.text())
+            #resultado = str(self.operador1 ** self.operador2)
+            resultado = self.devolverComa(round(self.operador1**self.operador2,2))
             self.Calculo.setText(resultado)
 
         if(self.operacion == "raiz"):
-            self.operador1 = int(self.Calculo.text())
+            #self.operador1 = int(self.Calculo.text())
+            self.operador1 = self.procesarComa(self.Calculo.text())
             if(self.operador1 < 0):
                 self.Calculo.setText("Error")
                 loop.exec_()
                 self.Calculo.setText("")
             else:
-                resultado = str(int(sqrt(self.operador1)))
+                #resultado = str(int(sqrt(self.operador1)))
+                resultado = self.devolverComa(round(sqrt(self.operador1),2))
                 self.Calculo.setText(resultado)
 
         self.mostrarOperacion.setText("")

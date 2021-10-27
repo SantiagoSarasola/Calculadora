@@ -41,8 +41,10 @@ class MiVentana(QMainWindow):
         self.borrar.clicked.connect(self.borrarNum)
         self.limpiar.clicked.connect(self.limpiarNum)
 
-    # Funciones de las operaciones
     
+    #------Funciones para el procesamiento de la coma-----------------
+    
+    #Esta función procesa la coma que viene desde la calculadora, y la convierte en punto para hacer las operaciones con Python
     def procesarComa(self,numeroStr):
         numero =[]
         floatNumber = False
@@ -65,44 +67,41 @@ class MiVentana(QMainWindow):
             numeroADevolver = int(numeroString)
         return numeroADevolver
 
+    #Esta función convierte el punto de las operaciones y lo convierte en coma para mostrar el numero en la calculadora, como un String.
     def devolverComa(self,numeroInt):
         numStri = str(numeroInt)
         numStri = numStri.replace(".",",")
         return numStri
 
+
+    # -------------------------Funciones de las operaciones------------
+
     def sumar(self):
         self.mostrarOperacion.setText(self.Calculo.text() + "+")
-        #self.operador1 = int(self.Calculo.text())
         self.operador1 = self.procesarComa(self.Calculo.text())
         self.Calculo.setText("")
         self.operacion = "suma"
-        
 
     def restar(self):
         self.mostrarOperacion.setText(self.Calculo.text() + "-")
-        #self.operador1 = int(self.Calculo.text())
         self.operador1 = self.procesarComa(self.Calculo.text())
         self.Calculo.setText("")
         self.operacion = "resta"
 
     def multiplicar(self):
         self.mostrarOperacion.setText(self.Calculo.text() + "*")
-        #self.operador1 = int(self.Calculo.text())
         self.operador1 = self.procesarComa(self.Calculo.text())
         self.Calculo.setText("")
         self.operacion = "multiplicar"
 
     def dividir(self):
         self.mostrarOperacion.setText(self.Calculo.text() + "/")
-        #self.operador1 = int(self.Calculo.text())
         self.operador1 = self.procesarComa(self.Calculo.text())
         self.Calculo.setText("")
         self.operacion = "division"
 
     def potenciacion(self):
-        # Si ya tiene asignado un operador, agregamos el otro con el mismo botón
         self.mostrarOperacion.setText(self.Calculo.text() + "^")
-        #self.operador1 = int(self.Calculo.text())
         self.operador1 = self.procesarComa(self.Calculo.text())
         self.Calculo.setText("")
         self.operacion = "potencia"
@@ -111,6 +110,7 @@ class MiVentana(QMainWindow):
         self.mostrarOperacion.setText(self.Calculo.text() + "√")
         self.Calculo.setText("")
         self.operacion = "raiz"
+
 
     # --------- Funciones para el borrado ----------------------
 
@@ -138,7 +138,8 @@ class MiVentana(QMainWindow):
             self.operador1 = int(newNum)
             self.mostrarOperacion.setText(newNum)
 
-    # Función para mostrar el resultado final de la operación
+
+    # ----------------------Función para mostrar el resultado final de la operación-------------------
 
     def resultado(self):
 
@@ -151,28 +152,20 @@ class MiVentana(QMainWindow):
         # Se procede a la operación dependiendo del tipo
         if(self.operacion == "suma"):
             self.operador2 = self.procesarComa(self.Calculo.text())
-            #resultado = str(self.operador1+self.operador2)
             resultado = self.devolverComa(round(self.operador1+self.operador2,2))
             self.Calculo.setText(resultado)
-            #self.operador1 = self.operador1+self.operador2
-            #self.operador2 = 0
 
         if(self.operacion == "resta"):
-            #self.operador2 = int(self.Calculo.text())
             self.operador2 = self.procesarComa(self.Calculo.text())
-            #resultado = str(self.operador1 - self.operador2)
             resultado = self.devolverComa(round(self.operador1-self.operador2,2))
             self.Calculo.setText(resultado)
 
         if(self.operacion == "multiplicar"):
-            #self.operador2 = int(self.Calculo.text())
             self.operador2 = self.procesarComa(self.Calculo.text())
-            #resultado = str(self.operador1 * self.operador2)
             resultado = self.devolverComa(round(self.operador1*self.operador2,2))
             self.Calculo.setText(resultado)
 
         if(self.operacion == "division"):
-            #self.operador2 = int(self.Calculo.text())
             self.operador2 = self.procesarComa(self.Calculo.text())
             if(self.operador2 == 0):
                 self.Calculo.setText("Error")
@@ -180,33 +173,29 @@ class MiVentana(QMainWindow):
                 self.Calculo.setText("")
 
             else:
-                #resultado = str(int(self.operador1/self.operador2))
                 resultado = self.devolverComa(round(self.operador1/self.operador2,2))
                 self.Calculo.setText(resultado)
 
         if(self.operacion == "potencia"):
-            #self.operador2 = int(self.Calculo.text())
             self.operador2 = self.procesarComa(self.Calculo.text())
-            #resultado = str(self.operador1 ** self.operador2)
             resultado = self.devolverComa(round(self.operador1**self.operador2,2))
             self.Calculo.setText(resultado)
 
         if(self.operacion == "raiz"):
-            #self.operador1 = int(self.Calculo.text())
             self.operador1 = self.procesarComa(self.Calculo.text())
             if(self.operador1 < 0):
                 self.Calculo.setText("Error")
                 loop.exec_()
                 self.Calculo.setText("")
             else:
-                #resultado = str(int(sqrt(self.operador1)))
                 resultado = self.devolverComa(round(sqrt(self.operador1),2))
                 self.Calculo.setText(resultado)
 
         self.mostrarOperacion.setText("")
         operador1 = resultado
 
-    # Eventos de asignación de valores al label
+
+    # ---------------------- Eventos de asignación de valores al label ------------------
 
     def click_1(self):
         self.mostrarOperacion.setText(self.mostrarOperacion.text() + "1")
